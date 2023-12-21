@@ -1,0 +1,9 @@
+<ng-container *ngIf="config && toogleForm" [formGroup]="toogleForm">
+  <ng-toggle
+    [color]="config.color"
+    [switchColor]="config.switchColor"
+    [disabled]="config.disabled"
+    [value]="config.value"
+    formControlName="toogle"
+  ></ng-toggle>
+</ng-container>

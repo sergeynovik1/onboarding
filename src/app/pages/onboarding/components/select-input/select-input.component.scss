@@ -1,0 +1,104 @@
+@import "./../../../../../theme/theme-variables.scss";
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+
+  span {
+    @include label-large-semibold($gray-700);
+  }
+
+  .input-wrapper {
+    border-radius: 10px;
+    border: 1px solid $gray-400;
+    display: grid;
+    grid: 48px / 1fr 20px;
+    overflow: hidden;
+    align-items: center;
+    padding-right: 20px;
+    z-index: 4;
+
+    .input {
+      border: 0;
+      outline: 0;
+      padding-left: 20px;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      @include label-large-regular($black);
+      cursor: pointer;
+
+      &::placeholder {
+        @include label-large-regular($gray-600);
+      }
+    }
+
+    mat-icon {
+      color: $gray-700;
+      cursor: pointer;
+      transition: 150ms;
+    }
+
+    &.visible {
+      mat-icon {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:focus-within {
+      box-shadow: 0px 0px 0px 3px #caedc9;
+    }
+
+    &:not(:focus-within).error {
+      border: 1px solid $error;
+    }
+
+    &:not(.error):hover {
+      border: 1px solid $gray-700;
+    }
+  }
+
+  .backdrop {
+    width: 100%;
+    height: 100%;
+    background-color: #353535;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    opacity: 0;
+    display: none;
+
+    &.visible {
+      display: block;
+    }
+  }
+
+  .backdrop-list-wrapper {
+    top: 83px;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    border-radius: 12px;
+    background: $white;
+    z-index: 4;
+    position: absolute;
+    box-shadow: 0px 20px 35px -5px rgba(19, 20, 20, 0.1),
+      0px 4px 10px 0px rgba(19, 20, 20, 0.05),
+      0px 0px 0px 1px rgba(19, 20, 20, 0.03);
+    padding: 4px;
+
+    .virtual-scroll {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      app-select-option {
+        height: 40px;
+      }
+    }
+  }
+}

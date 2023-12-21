@@ -1,0 +1,6 @@
+$font-path: "./fonts/";
+
+@font-face {
+  font-family: "GeneralSansVariable";
+  src: url($font-path + "general-sans-variable.ttf") format("truetype");
+}

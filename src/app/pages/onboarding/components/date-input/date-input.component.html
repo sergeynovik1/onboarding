@@ -1,0 +1,42 @@
+<div class="wrapper">
+  <span>
+    <ng-content></ng-content>
+  </span>
+  <ng-container>
+    <div
+      class="input-wrapper"
+      *ngIf="dateForm"
+      [ngClass]="{
+        disabled: this.dateForm.controls['date'].disabled,
+        error:
+          this.dateForm.controls['date'].touched &&
+          this.dateForm.controls['date'].dirty &&
+          !!this.dateForm.controls['date'].errors
+      }"
+    >
+      <ng-container [formGroup]="dateForm">
+        <input
+          type="text"
+          [placeholder]="
+            inputOption?.placeholder ? inputOption?.placeholder : ''
+          "
+          [matDatepicker]="picker"
+          formControlName="date"
+          (focus)="maskedInput.focus()"
+          #dateInput
+        />
+      </ng-container>
+      <input
+        type="text"
+        #maskedInput
+        [placeholder]="inputOption?.placeholder ? inputOption?.placeholder : ''"
+        [(ngModel)]="dateInput.value"
+        [disabled]="dateForm.controls['date'].disabled"
+        (input)="dispatch(maskedInput.value, dateInput)"
+        mask="M0/d0/0000"
+      />
+      <div class="icon" (click)="picker.open()"></div>
+      <mat-datepicker #picker></mat-datepicker>
+    </div>
+  </ng-container>
+</div>

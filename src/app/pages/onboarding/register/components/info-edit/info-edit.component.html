@@ -1,0 +1,59 @@
+<div class="wrapper">
+  <div class="content" *ngIf="editForm">
+    <div class="content-title">
+      <h1>Edit Information</h1>
+    </div>
+    <div class="content-form" [formGroup]="editForm">
+      <div class="h_stack">
+        <app-input
+          [inputOptions]="inputOptions['firstName']"
+          formControlName="firstName"
+          >First Name</app-input
+        >
+        <app-input
+          [inputOptions]="inputOptions['lastName']"
+          formControlName="lastName"
+          >Last Name</app-input
+        >
+      </div>
+      <div class="h_stack">
+        <app-phone-input formControlName="mobile">Phone Number</app-phone-input>
+        <app-input
+          [inputOptions]="inputOptions['email']"
+          formControlName="email"
+          >Email</app-input
+        >
+      </div>
+      <app-adress-input
+        placeholder="Enter your adress"
+        formControlName="address"
+        >Adress</app-adress-input
+      >
+      <div class="h_stack">
+        <app-date-input
+          [inputOption]="inputOptions['date']"
+          formControlName="birthDate"
+          >Date Of Birth</app-date-input
+        >
+        <app-input [inputOptions]="inputOptions['ssn']" formControlName="ssn"
+          >SSN</app-input
+        >
+      </div>
+    </div>
+    <div class="content-actions">
+      <button
+        class="btn btn-secondary btn-lg"
+        routerLink="/register/info/check"
+      >
+        Cancel
+      </button>
+      <button
+        class="btn btn-primary btn-lg"
+        [disabled]="editForm.invalid"
+        (click)="updateUser()"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</div>

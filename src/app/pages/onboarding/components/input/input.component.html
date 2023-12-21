@@ -1,0 +1,32 @@
+<div class="wrapper" *ngIf="inputForm">
+  <span>
+    <ng-content></ng-content>
+  </span>
+  <div
+    class="input-wrapper"
+    [formGroup]="inputForm"
+    [ngClass]="{
+      disabled: this.inputForm.controls['input'].disabled,
+      error:
+        this.inputForm.controls['input'].touched &&
+        this.inputForm.controls['input'].dirty &&
+        !!this.inputForm.controls['input'].errors
+    }"
+  >
+    <input
+      *ngIf="inputOptions.outputTransformFn"
+      type="text"
+      formControlName="input"
+      [outputTransformFn]="inputOptions.outputTransformFn"
+      [mask]="inputOptions.mask ? inputOptions.mask : undefined"
+      [placeholder]="inputOptions.placeholder ? inputOptions.placeholder : ''"
+    />
+    <input
+      *ngIf="!inputOptions.outputTransformFn"
+      type="text"
+      formControlName="input"
+      [mask]="inputOptions.mask ? inputOptions.mask : undefined"
+      [placeholder]="inputOptions.placeholder ? inputOptions.placeholder : ''"
+    />
+  </div>
+</div>

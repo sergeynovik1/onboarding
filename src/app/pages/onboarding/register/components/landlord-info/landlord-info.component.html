@@ -1,0 +1,95 @@
+<div class="wrapper">
+  <div class="container-wrapper" *ngIf="form" [formGroup]="form">
+    <div class="container">
+      <div class="title-wrapper">
+        <h1 class="title">Landlord information</h1>
+        <span class="subtitle"
+          >Please enter the following information for your past 24 months of
+          rental history. We need this information to get you the strongest
+          results the fastest.</span
+        >
+      </div>
+      <div
+        class="form"
+        *ngIf="form.controls['current']"
+        formGroupName="current"
+      >
+        <div class="adress-banner-wrapper">
+          <h1 *ngIf="form.controls['previous']">Current Landlord</h1>
+          <div class="adress-banner" *ngIf="state.value?.user?.addresses">
+            <div class="icon"></div>
+            <div class="text">
+              {{
+                getStringAdress(state.value?.user?.addresses ?? [], "current")
+              }}
+            </div>
+          </div>
+        </div>
+        <app-select-input formControlName="type" [options]="options">
+          Landlord Type
+        </app-select-input>
+        <div class="h_stack">
+          <app-input
+            [inputOptions]="getOption('Enter First name', 'firstName')"
+            formControlName="firstName"
+            >First Name of Contact</app-input
+          >
+          <app-input
+            [inputOptions]="getOption('Enter Last name', 'lastName')"
+            formControlName="lastName"
+            >Last Name of Contact</app-input
+          >
+        </div>
+        <app-input
+          [inputOptions]="getOption('Enter Email', 'email')"
+          formControlName="email"
+          >Email</app-input
+        >
+        <app-phone-input formControlName="phoneNumber"
+          >Phone Number</app-phone-input
+        >
+      </div>
+      <div
+        class="form"
+        *ngIf="form.controls['previous']"
+        formGroupName="previous"
+      >
+        <div class="adress-banner-wrapper">
+          <h1>Previous landlord</h1>
+          <div class="adress-banner" *ngIf="state.value?.user?.addresses">
+            <div class="icon"></div>
+            <div class="text">
+              {{
+                getStringAdress(state.value?.user?.addresses ?? [], "previous")
+              }}
+            </div>
+          </div>
+        </div>
+        <app-select-input [options]="options"> Landlord Type </app-select-input>
+        <div class="h_stack">
+          <app-input
+            [inputOptions]="getOption('Enter First name', 'firstName')"
+            formControlName="firstName"
+            >First Name of Contact</app-input
+          >
+          <app-input
+            [inputOptions]="getOption('Enter Last name', 'lastName')"
+            formControlName="lastName"
+            >Last Name of Contact</app-input
+          >
+        </div>
+        <app-input
+          [inputOptions]="getOption('Enter Email', 'email')"
+          formControlName="email"
+          >Email</app-input
+        >
+        <app-phone-input formControlName="phoneNumber"
+          >Phone Number</app-phone-input
+        >
+      </div>
+      <button class="btn btn-lg btn-primary" (click)="onContinueClick()">
+        Continue
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="wrapper" *ngIf="inputForm">
+  <span>
+    <ng-content></ng-content>
+  </span>
+  <div
+    class="input-wrapper"
+    [formGroup]="inputForm"
+    [ngClass]="{
+      disabled: this.inputForm.controls['adress'].disabled,
+      error:
+        this.inputForm.controls['adress'].touched &&
+        this.inputForm.controls['adress'].dirty &&
+        !!this.inputForm.invalid
+    }"
+  >
+    <input
+      #adress
+      type="text"
+      ngx-gp-autocomplete
+      [placeholder]="placeholder"
+      (onAddressChange)="onAdressChange($event)"
+      formControlName="adress"
+    />
+  </div>
+</div>

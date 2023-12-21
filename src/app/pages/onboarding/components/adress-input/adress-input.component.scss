@@ -1,0 +1,50 @@
+@import "./../../../../../theme/theme-variables.scss";
+
+.wrapper {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  span {
+    @include label-large-semibold($gray-700);
+  }
+
+  .input-wrapper {
+    border-radius: 10px;
+    border: 1px solid $gray-400;
+    overflow: hidden;
+
+    input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      padding: 14px 20px;
+      @include label-large-regular($black);
+
+      &::placeholder {
+        color: $gray-700;
+      }
+    }
+
+    &:focus-within {
+      box-shadow: 0px 0px 0px 3px #caedc9;
+    }
+
+    &.disabled {
+      input {
+        background-color: $gray-100;
+        color: $gray-400;
+      }
+    }
+
+    &.error {
+      border: 1px solid $error;
+    }
+
+    &:not(.error):hover {
+      border: 1px solid $gray-700;
+    }
+  }
+}

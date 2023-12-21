@@ -1,0 +1,53 @@
+<div class="wrapper">
+  <input
+    type="file"
+    name="file"
+    id="file"
+    [multiple]="multiple"
+    [accept]="acceptTypes"
+    #input
+    (change)="onInputChange($event.target)"
+  />
+  <ng-template
+    [ngTemplateOutlet]="imagePreview ? imagePreviewTemplate : dropzoneTemplate"
+  >
+  </ng-template>
+  <ng-content></ng-content>
+  <button
+    class="btn btn-secondary btn-sm"
+    *ngIf="imagePreview"
+    (click)="input.click()"
+  >
+    Upload another
+  </button>
+  <button
+    *ngIf="imagePreview"
+    class="close-button"
+    (click)="resetImage()"
+  ></button>
+</div>
+
+<ng-template #dropzoneTemplate>
+  <div
+    class="dropzone"
+    drag-n-drop
+    (filesChange)="onFilesChanges($event)"
+    (click)="input.click()"
+  >
+    <div class="text-wrapper">
+      <div class="icon"></div>
+      <label class="drag-text-wrapper">
+        <span class="drag-text">
+          <ng-content select="[body]"></ng-content>
+        </span>
+        <span class="drag-text-enter">Drop files here</span>
+      </label>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #imagePreviewTemplate>
+  <div class="image-wrapper">
+    <img #img [src]="imagePreview" />
+  </div>
+</ng-template>

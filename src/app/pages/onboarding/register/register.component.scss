@@ -1,0 +1,162 @@
+@import './../../../../theme/theme-variables.scss';
+@import './../../../../theme/buttons/buttons.scss';
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  display: grid;
+  grid: 1fr auto / auto;
+  overflow: hidden;
+  position: relative;
+
+  .outlet {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+  }
+
+  .progress-wrapper {
+    width: 100%;
+    min-height: 105px;
+    display: grid;
+    grid: 4px 1fr / auto;
+
+    .progress-line {
+      width: 20%;
+      height: 100%;
+      background-color: $theme-800;
+    }
+
+    .progress-bar {
+      width: 100%;
+      border-top: 1px solid $gray-400;
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &.media {
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 20px;
+
+        .top {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          gap: 16px;
+        }
+
+        .bottom {
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          .primary-text {
+            @include body-small-medium($gray-700);
+            letter-spacing: 0.1px;
+
+            a {
+              text-decoration: none;
+              cursor: pointer;
+              color: $theme-800;
+            }
+          }
+        }
+      }
+
+      .btn {
+        width: 140px;
+      }
+
+      .primary-wrapper {
+        .primary-text {
+          @include body-small-medium($gray-700);
+          letter-spacing: 0.1px;
+
+          a {
+            text-decoration: none;
+            cursor: pointer;
+            color: $theme-800;
+          }
+        }
+      }
+    }
+
+    &.create-account-manually,
+    &.rent-reporting {
+      .primary-wrapper {
+        display: grid;
+        grid: auto / 240px 1fr;
+        align-items: center;
+      }
+    }
+
+    &.verification {
+      .progress-line {
+        width: 40%;
+      }
+    }
+
+    &.rent-reporting {
+      .progress-line {
+        width: 60%;
+      }
+      .primary-wrapper {
+        .primary-text {
+          span {
+            color: #0d51a2 !important;
+          }
+        }
+      }
+    }
+
+    &.payment {
+      .progress-line {
+        width: 80%;
+      }
+      .primary-wrapper {
+        display: grid;
+        grid: auto / auto 1fr;
+        align-items: center;
+        gap: 16px;
+      }
+    }
+  }
+
+  .loader-spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .create-account-manually,
+  .info-check,
+  .verification,
+  .rent-reporting,
+  .payment {
+    .progress-bar {
+      &.default {
+        display: none !important;
+      }
+      &.media {
+        display: flex !important;
+      }
+    }
+  }
+
+  .info-check,
+  .verification {
+    min-height: unset !important;
+  }
+}

@@ -1,0 +1,52 @@
+<div class="wrapper">
+  <span>
+    <ng-content></ng-content>
+  </span>
+  <div
+    class="input-wrapper"
+    [ngClass]="{
+      disabled: this.form.controls['option'].disabled,
+      error:
+        this.form.controls['option'].touched &&
+        this.form.controls['option'].dirty &&
+        !!this.form.controls['option'].errors,
+      visible: isBackdropVisible
+    }"
+    *ngIf="form"
+    [formGroup]="form"
+  >
+    <input type="text" style="display: none" formControlName="option" />
+    <input
+      readonly
+      type="text"
+      class="input"
+      placeholder="Select landlord type"
+      [value]="form.controls['option'].value"
+      (focus)="
+        isBackdropVisible = true; form.controls['option'].markAsTouched()
+      "
+      (input)="form.controls['option'].markAsDirty()"
+    />
+    <mat-icon (click)="isBackdropVisible = !isBackdropVisible"
+      >keyboard_arrow_down</mat-icon
+    >
+  </div>
+  <div
+    class="backdrop"
+    [ngClass]="{ visible: isBackdropVisible }"
+    (click)="isBackdropVisible = !isBackdropVisible"
+  ></div>
+  <div
+    class="backdrop-list-wrapper"
+    [ngClass]="{ visible: isBackdropVisible }"
+    [@expandAnimation]="isBackdropVisible ? 'expanded' : 'collapsed'"
+  >
+    <cdk-virtual-scroll-viewport itemSize="40" class="virtual-scroll">
+      <app-select-option
+        *ngFor="let option of options"
+        (click)="onOptionSelect(option); isBackdropVisible = false"
+        >{{ option }}</app-select-option
+      >
+    </cdk-virtual-scroll-viewport>
+  </div>
+</div>

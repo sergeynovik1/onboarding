@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <div class="header-wrapper">
+    <h1>Let’s make sure everything is correct</h1>
+  </div>
+  <div class="content-wrapper">
+    <div class="container" *ngIf="state | async as data">
+      <div class="content">
+        <div class="item">
+          <h2 class="item-title">Full Name</h2>
+          <span class="item-text"
+            >{{ data.user?.firstName }} {{ data.user?.lastName }}</span
+          >
+        </div>
+        <div class="item" *ngIf="data.user && data.user.addresses">
+          <h2 class="item-title">Address</h2>
+          <span class="item-text">{{ getAdress(data.user.addresses) }}</span>
+        </div>
+        <div class="item" *ngIf="data.user && data.user.mobile">
+          <h2 class="item-title">Phone Number</h2>
+          <span class="item-text">{{
+            data.user.mobile.substring(1) | phone
+          }}</span>
+        </div>
+        <div class="item">
+          <h2 class="item-title">Date of Birth</h2>
+          <span class="item-text">{{ data.user?.dob }}</span>
+        </div>
+        <div class="item">
+          <h2 class="item-title">E-mail</h2>
+          <span class="item-text">{{
+            data.user?.email ? data.user?.email : "not exist"
+          }}</span>
+        </div>
+        <div class="item">
+          <h2 class="item-title">SSN</h2>
+          <span class="item-text"
+            >***-**-{{ data.user?.ssn?.substring(5) }}</span
+          >
+        </div>
+      </div>
+      <span
+        [routerLink]="['/register/info/edit']"
+        routerLinkActive="router-link-active"
+        class="container-link"
+        >Edit Information</span
+      >
+    </div>
+  </div>
+</div>

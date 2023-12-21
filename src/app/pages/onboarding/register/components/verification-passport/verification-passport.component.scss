@@ -1,0 +1,146 @@
+@import "./../../../../../../theme/theme-variables.scss";
+@import "./../../../../../../theme/buttons/buttons.scss";
+
+.wrapper {
+  width: 100%;
+  overflow: auto;
+  padding-top: 105px;
+
+  .content-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .content {
+      max-width: 600px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+
+      .title {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+
+        h1 {
+          @include title-large($black);
+        }
+
+        .subtitle {
+          display: flex;
+
+          span {
+            @include body-large-regular($black);
+            text-align: center;
+          }
+        }
+      }
+
+      .card {
+        max-width: 290px;
+
+        .drag-n-drop-body {
+          text-align: center;
+          @include body-large-regular($black);
+
+          span {
+            @include body-large-semibold($theme-800);
+          }
+
+          &.default {
+            display: block;
+          }
+
+          &.media {
+            display: none;
+            @include body-large-semibold($theme-800);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .wrapper {
+    padding: 0 24px;
+    margin: 24px 0;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .title {
+    h1 {
+      font-size: 24px !important;
+      line-height: 32px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .wrapper {
+    .content-wrapper {
+      .content {
+        .title {
+          h1 {
+            text-align: center;
+          }
+        }
+
+        .card {
+          max-width: unset;
+          width: 250px !important;
+
+          .drag-n-drop-body {
+            &.default {
+              display: none !important;
+            }
+
+            &.media {
+              display: block !important;
+            }
+          }
+
+          ::ng-deep {
+            app-drag-and-drop {
+              .dropzone {
+                width: 250px !important;
+                height: 212px !important;
+
+                .text-wrapper {
+                  height: auto;
+                }
+
+                .icon {
+                  background: url("./../../../../../../assets/icons/icon-cloud-storage-upload-green.svg");
+                  background-position: center;
+                  background-repeat: no-repeat;
+                }
+              }
+
+              .image-wrapper {
+                width: 250px !important;
+              }
+
+              .btn {
+                display: none;
+              }
+
+              .close-button {
+                display: block;
+              }
+
+              .template-under {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

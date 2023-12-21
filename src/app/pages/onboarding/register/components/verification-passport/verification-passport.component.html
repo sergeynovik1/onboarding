@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <div class="content-wrapper">
+    <div class="content">
+      <div class="title">
+        <h1>Verify your identity</h1>
+        <div class="subtitle">
+          <span
+            >Upload scan or photo of your passport. Make sure all the details
+            are clear to read with no blurs or glares.</span
+          >
+        </div>
+      </div>
+      <div class="card" *ngIf="passportForm" [formGroup]="passportForm">
+        <app-drag-and-drop
+          [multiple]="false"
+          [acceptTypes]="'image/*'"
+          formControlName="passport"
+        >
+          <span class="drag-n-drop-body default" body
+            >Drag and drop your file here or <span>Choose files</span> to
+            upload</span
+          >
+          <span class="drag-n-drop-body media" body
+            >Upload scan or photo of your passport</span
+          >
+        </app-drag-and-drop>
+      </div>
+    </div>
+  </div>
+</div>

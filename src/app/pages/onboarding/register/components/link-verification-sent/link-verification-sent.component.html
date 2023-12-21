@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <div class="form" *ngIf="state | async as state">
+    <div class="title-wrapper">
+      <h1 class="title">Please check your phone!</h1>
+      <span class="subtitle"
+        >We have sent you a verification link to
+        <span *ngIf="state.user && state.user.mobile">{{
+          state.user.mobile | phone
+        }}</span>
+        This link is valid for <span>4 minutes.</span></span
+      >
+    </div>
+    <div
+      class="timer-wrapper"
+      *ngIf="state.smfaVerification && state.smfaVerification.expire"
+    >
+      <app-timer
+        [endTimestamp]="state.smfaVerification.expire"
+        (timerExpired)="onTimerExpired(resendButton)"
+      ></app-timer>
+    </div>
+    <div class="actions-wrapper">
+      <button
+        #resendButton
+        class="btn btn-primary btn-lg"
+        (click)="onResendClick(resendButton)"
+        disabled
+      >
+        Resend Link
+      </button>
+      <button
+        class="btn btn-secondary btn-lg"
+        routerLink="/register/create-account/auto"
+      >
+        Change Phone Number
+      </button>
+    </div>
+  </div>
+</div>

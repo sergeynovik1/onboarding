@@ -1,0 +1,74 @@
+<div class="wrapper">
+  <div class="content">
+    <div class="title">
+      <h1>Create Account</h1>
+      <div class="subtitle">
+        <span
+          >You can register with App by creating your password and clicking the
+          “Auto Sign Up” button and we will collect all necessary information
+          for you</span
+        >
+      </div>
+    </div>
+    <div class="form-wrapper" *ngIf="createAccountForm">
+      <div class="form">
+        <div class="form-input" [formGroup]="createAccountForm">
+          <app-phone-input formControlName="phoneNumber">
+            Phone Number
+          </app-phone-input>
+          <div class="h_stack">
+            <app-input
+              [inputOptions]="inputOptions['shortBirthDate']"
+              formControlName="dob"
+              >Date of Birth</app-input
+            >
+            <app-input
+              [inputOptions]="inputOptions['zipCode']"
+              formControlName="zipCode"
+              >ZIP Code</app-input
+            >
+          </div>
+          <app-password-input formControlName="password" [showPrompt]="true">
+            Password
+          </app-password-input>
+          <app-password-input formControlName="rePassword" [showPrompt]="false">
+            Confirm Password
+          </app-password-input>
+        </div>
+        <div class="form-auto">
+          <button
+            class="btn btn-primary btn-lg"
+            [disabled]="createAccountForm.invalid"
+            (click)="autoSignUp()"
+          >
+            Auto Sign Up
+          </button>
+          <span class="text"
+            >By clicking ”Auto Sign Up” button you are accepting our
+            <span>Terms & Conditions</span> and
+            <span>Privacy Policy.</span></span
+          >
+        </div>
+        <div class="form-separator">
+          <div class="separator">
+            <div class="line"></div>
+            <span>OR</span>
+            <div class="line"></div>
+          </div>
+          <button
+            class="btn btn-secondary btn-lg"
+            routerLink="/register/create-account/manually"
+          >
+            Sign Up Manually
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="login-wrapper">
+      <span class="login"
+        >Already have an account?
+        <span routerLink="/sign-in">Log In</span></span
+      >
+    </div>
+  </div>
+</div>

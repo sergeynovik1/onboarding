@@ -1,0 +1,30 @@
+<div class="wrapper" *ngIf="phoneForm">
+  <span>
+    <ng-content></ng-content>
+  </span>
+  <div
+    class="input-wrapper"
+    [ngClass]="{
+      disabled: this.phoneForm.controls['phone'].disabled,
+      error:
+        this.phoneForm.controls['phone'].touched &&
+        this.phoneForm.controls['phone'].dirty &&
+        !!this.phoneForm.controls['phone'].errors
+    }"
+  >
+    <div class="country">
+      <img src="./../../../../../assets/icons/icon-usa.svg" />
+      <mat-icon>arrow_drop_down</mat-icon>
+    </div>
+    <div class="input" (click)="input.select()" [formGroup]="phoneForm">
+      <div class="region-code">+1</div>
+      <input
+        type="tel"
+        mask="(000) 000-0000"
+        placeholder="(xxx) xxx-xxxx"
+        formControlName="phone"
+        #input
+      />
+    </div>
+  </div>
+</div>

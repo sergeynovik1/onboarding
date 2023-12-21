@@ -1,0 +1,70 @@
+<div class="wrapper">
+  <div class="content-wrapper" *ngIf="verificationForm">
+    <div class="content">
+      <div class="title">
+        <h1>Verify your identity</h1>
+        <div class="subtitle">
+          <span
+            >Upload scans or photos of front and back sides of your ID
+            card/Driver license. Make sure all the details are clear to read
+            with no blurs or glares.</span
+          >
+        </div>
+      </div>
+      <div
+        #cardsWrapper
+        class="cards-wrapper"
+        (scroll)="onScroll($event)"
+        [formGroup]="verificationForm"
+      >
+        <div class="cards-container">
+          <div class="card">
+            <app-drag-and-drop
+              [multiple]="false"
+              [acceptTypes]="'image/*'"
+              formControlName="frontSide"
+            >
+              <span class="drag-n-drop-body default" body
+                >Drag and drop your file here or <span>Choose files</span> to
+                upload</span
+              >
+              <span class="drag-n-drop-body media" body
+                >Upload the front side of your ID</span
+              >
+              <span class="template-under">Front Side</span></app-drag-and-drop
+            >
+          </div>
+          <div class="card">
+            <app-drag-and-drop
+              [multiple]="false"
+              [acceptTypes]="'image/*'"
+              formControlName="backSide"
+            >
+              <span class="drag-n-drop-body default" body
+                >Drag and drop your file here or <span>Choose files</span> to
+                upload</span
+              >
+              <span class="drag-n-drop-body media" body
+                >Upload the back side of your ID</span
+              ><span class="template-under">Back Side</span></app-drag-and-drop
+            >
+          </div>
+        </div>
+      </div>
+      <div class="carousel-control-wrapper">
+        <div class="dot-wrapper">
+          <div
+            class="dot"
+            [ngClass]="{ active: cardsWrapper.scrollLeft < 255 }"
+          ></div>
+        </div>
+        <div class="dot-wrapper">
+          <div
+            class="dot"
+            [ngClass]="{ active: cardsWrapper.scrollLeft >= 255 }"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

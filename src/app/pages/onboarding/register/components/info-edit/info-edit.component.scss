@@ -1,0 +1,73 @@
+@import "./../../../../../../theme/theme-variables.scss";
+@import "./../../../../../../theme/buttons/buttons.scss";
+
+.wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding-top: 105px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  .content {
+    max-width: 520px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    &-title {
+      h1 {
+        @include title-large($black);
+        text-align: center;
+      }
+    }
+
+    &-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .h_stack {
+        width: 100%;
+        display: grid;
+        grid: auto / 1fr 1fr;
+        gap: 16px;
+      }
+    }
+
+    &-actions {
+      display: flex;
+      gap: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .wrapper {
+    padding: 0 24px;
+    margin: 24px 0;
+  }
+}
+
+@media screen and (max-width: 615px) {
+  .wrapper {
+    .content {
+      &-form {
+        .h_stack {
+          width: 100%;
+          grid: 1fr 1fr / auto;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .content-title {
+    h1 {
+      font-size: 24px !important;
+      line-height: 32px !important;
+    }
+  }
+}

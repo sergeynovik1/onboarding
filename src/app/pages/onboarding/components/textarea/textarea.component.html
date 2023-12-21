@@ -1,0 +1,9 @@
+<div class="wrapper" *ngIf="form" [formGroup]="form">
+  <span>
+    <ng-content></ng-content>
+  </span>
+  <textarea
+    [placeholder]="inputOptions.placeholder"
+    formControlName="text"
+  ></textarea>
+</div>

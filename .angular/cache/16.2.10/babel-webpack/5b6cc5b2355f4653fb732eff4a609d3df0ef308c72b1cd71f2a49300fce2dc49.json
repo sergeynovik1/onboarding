@@ -1,0 +1,1 @@
+{"ast":null,"code":"export function numberValidator() {\n  return control => {\n    const value = control.value;\n    if (value && /\\d/.test(value)) {\n      return null;\n    } else {\n      return {\n        numberError: 'Password must contain one or more number.'\n      };\n    }\n  };\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

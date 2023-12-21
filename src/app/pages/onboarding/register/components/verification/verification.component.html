@@ -1,0 +1,44 @@
+<div class="wrapper">
+  <div class="content-wrapper">
+    <div class="content">
+      <div class="title">
+        <h1>Verify your identity</h1>
+        <div class="subtitle">
+          <span
+            >Federal regulation requires that we gather this information. It
+            will not affect your credit score.</span
+          >
+        </div>
+      </div>
+      <div class="cards-wrapper">
+        <div
+          class="card card-id"
+          [ngClass]="{
+            selected: this.selectedControl?.name == 'id'
+          }"
+          (click)="
+            onControlSelect({ name: 'id', route: '/register/verification/id/' })
+          "
+        >
+          <div class="icon"></div>
+          <div class="text">Driver license / ID card</div>
+        </div>
+        <div
+          class="card card-passport"
+          [ngClass]="{
+            selected: this.selectedControl?.name == 'passport'
+          }"
+          (click)="
+            onControlSelect({
+              name: 'passport',
+              route: '/register/verification/passport/'
+            })
+          "
+        >
+          <div class="icon"></div>
+          <div class="text">Passport</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="wrapper">
+  <div class="content-wrapper">
+    <div class="content">
+      <div class="title">
+        <h1>Add rent reporting</h1>
+        <div class="subtitle">
+          <span
+            >For best results, we need your current home and past home addresses
+            up to the past 24 months so that we can begin your rent reporting.
+            Users receive faster and more aggressive results when they provide
+            this information.</span
+          >
+        </div>
+      </div>
+      <ng-container *ngIf="adressForm" [formGroup]="adressForm">
+        <div class="form">
+          <div class="form-title">
+            <h1>Current Adress</h1>
+            <div class="form-title_toogle default">
+              <app-toogle formControlName="isRenting"></app-toogle>
+              <span>I’m not renting right now</span>
+            </div>
+          </div>
+          <app-adress-input
+            formControlName="currentAdress"
+            placeholder="Enter address"
+            >Adress</app-adress-input
+          >
+          <div class="date-wrapper">
+            <app-date-input
+              formControlName="currentMoveInDate"
+              [inputOption]="inputOptions['date']"
+              >Move In Date</app-date-input
+            >
+            <div></div>
+          </div>
+          <div class="form-title_toogle media">
+            <app-toogle formControlName="isRenting"></app-toogle>
+            <span>I’m not renting right now</span>
+          </div>
+        </div>
+        <div
+          class="form"
+          *ngIf="
+            this.adressForm.controls['previousAdress'] &&
+            this.adressForm.controls['previousMoveInDate'] &&
+            this.adressForm.controls['previousMoveOutDate']
+          "
+        >
+          <div class="form-title">
+            <h1>Previous Address</h1>
+          </div>
+          <div class="prev-info">
+            <div class="icon"></div>
+            <div class="text-wrapper">
+              <h1>This may improve your score</h1>
+              <span>
+                Enter any address from past 24 months where you were a lease
+                holder that best reflects your ability to pay rent on time.
+              </span>
+            </div>
+          </div>
+          <app-adress-input
+            formControlName="previousAdress"
+            placeholder="Enter address"
+            >Adress</app-adress-input
+          >
+          <div class="date-wrapper">
+            <app-date-input
+              formControlName="previousMoveInDate"
+              [inputOption]="inputOptions['date']"
+              >Move In Date</app-date-input
+            >
+            <app-date-input
+              formControlName="previousMoveOutDate"
+              [inputOption]="inputOptions['date']"
+              >Move Out Date</app-date-input
+            >
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

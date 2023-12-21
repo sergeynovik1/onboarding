@@ -1,0 +1,130 @@
+@import "./../../../../../../theme/theme-variables.scss";
+@import "./../../../../../../theme/buttons/buttons.scss";
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+
+  .content {
+    max-width: 520px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    .title {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+
+      h1 {
+        @include title-large($black);
+      }
+    }
+
+    .form-wrapper {
+      width: 100%;
+
+      .form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        &_h-inputs {
+          display: grid;
+          grid: 1fr 1fr / 1fr 1fr;
+          gap: 16px;
+        }
+
+        &_signup-wrapper {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-top: 16px;
+
+          .signup {
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            .text {
+              @include body-small-medium($gray-700);
+
+              span {
+                color: $theme-800;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .login-wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .login {
+        @include body-large-regular($black);
+
+        span {
+          @include body-large-semibold($theme-800);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .wrapper {
+    padding: 0 24px;
+    margin-top: 24px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  ::ng-deep {
+    app-password-input {
+      .wrapper {
+        .input-wrapper {
+          .prompt-wrapper {
+            left: 0 !important;
+            padding: 0 !important;
+            top: 90px !important;
+            width: 100% !important;
+
+            &::before {
+              content: "";
+              top: -7% !important;
+              transform: rotate(90deg) !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .title {
+    h1 {
+      font-size: 24px !important;
+      line-height: 32px !important;
+    }
+  }
+
+  .form-wrapper {
+    .form {
+      .form_h-inputs {
+        grid: 1fr 1fr 1fr 1fr / auto !important;
+      }
+    }
+  }
+}

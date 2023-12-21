@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="title-wrapper">
+      <h1>Contact Us</h1>
+    </div>
+    <div class="inputs-wrapper" *ngIf="form" [formGroup]="form">
+      <app-input
+        [inputOptions]="inputOptions['fullName']"
+        formControlName="fullName"
+        >Full Name</app-input
+      >
+      <app-input [inputOptions]="inputOptions['email']" formControlName="email"
+        >Email</app-input
+      >
+      <app-textarea [inputOptions]="messageOption" formControlName="message"
+        >Your message</app-textarea
+      >
+    </div>
+    <button
+      class="btn btn-lg btn-primary"
+      [disabled]="form?.invalid || form?.pristine"
+      (click)="onSendClick()"
+    >
+      Send Message
+    </button>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+@import "theme/theme-variables";
+@import "theme/theme.scss";
+
+.mdc-snackbar__surface {
+  background-color: $error !important;
+}
+
+.mat-spinner::ng-deep circle {
+  stroke: #fff;
+}
+
+.mat-mdc-snack-bar-action {
+  color: $warning !important;
+}
+
+.mdc-circular-progress__indeterminate-circle-graphic {
+  stroke: $theme-800 !important;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: $default-font, sans-serif !important;
+}

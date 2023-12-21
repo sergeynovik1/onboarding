@@ -1,0 +1,59 @@
+<div class="wrapper">
+  <div class="content">
+    <div class="title">
+      <h1>Create Account</h1>
+    </div>
+    <div class="form-wrapper" *ngIf="createAccountForm">
+      <div class="form" [formGroup]="createAccountForm">
+        <div class="form_h-inputs">
+          <app-input
+            [inputOptions]="inputOptions['firstName']"
+            formControlName="firstName"
+            >First Name</app-input
+          >
+          <app-input
+            [inputOptions]="inputOptions['lastName']"
+            formControlName="lastName"
+            >Last Name</app-input
+          >
+          <app-phone-input formControlName="mobile"
+            >Phone Number</app-phone-input
+          >
+          <app-input
+            [inputOptions]="inputOptions['email']"
+            formControlName="email"
+            >Email</app-input
+          >
+        </div>
+        <app-adress-input
+          placeholder="Enter your adress"
+          formControlName="address"
+          >Adress</app-adress-input
+        >
+        <div class="form_h-inputs">
+          <app-date-input
+            [inputOption]="inputOptions['date']"
+            formControlName="birthDate"
+            placeholder="Enter your date of birth"
+            >Date Of Birth</app-date-input
+          >
+          <app-input [inputOptions]="inputOptions['ssn']" formControlName="ssn"
+            >SSN</app-input
+          >
+          <app-password-input [showPrompt]="true" formControlName="password"
+            >Password</app-password-input
+          >
+          <app-password-input formControlName="rePassword"
+            >Confirm Password</app-password-input
+          >
+        </div>
+      </div>
+    </div>
+    <div class="login-wrapper">
+      <span class="login"
+        >Already have an account?
+        <span routerLink="/sign-in">Log In</span></span
+      >
+    </div>
+  </div>
+</div>

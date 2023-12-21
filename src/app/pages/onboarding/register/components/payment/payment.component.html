@@ -1,0 +1,67 @@
+<div class="wrapper">
+  <div class="container-wrapper">
+    <div class="container">
+      <div class="banner">
+        <h1>Payment details</h1>
+        <div class="promo-banner">
+          <h1 class="title">First month <span>50% OFF</span></h1>
+          <div
+            class="price-wrapper"
+            *ngIf="selectedPackage | async as selectedPackage"
+          >
+            <div class="prices">
+              <span class="old-price">{{ selectedPackage.amount }}$</span>
+              <span class="new-price"
+                >{{ selectedPackage.amount_discount }}$</span
+              >
+            </div>
+            <span class="recruing-price"
+              >Recurring Total {{ selectedPackage.amount }} / month</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="form" *ngIf="paymentForm" [formGroup]="paymentForm">
+        <app-input
+          [inputOptions]="inputOption['cardNumberName']"
+          formControlName="cardName"
+          >Name on Card</app-input
+        >
+        <div class="h-stack">
+          <div class="input-wrapper">
+            <span>Card Number</span>
+            <div id="billsby-number" #billsbyNumber></div>
+          </div>
+          <app-input
+            [inputOptions]="inputOption['shortBirthDate']"
+            formControlName="expirationDate"
+            >Expiration Date</app-input
+          >
+          <div class="input-wrapper">
+            <span>CVC</span>
+            <div id="billsby-cvv" #billsbyCvv></div>
+          </div>
+        </div>
+        <app-adress-input
+          placeholder="Enter billing adress"
+          formControlName="billingAdress"
+          >Billing Adress</app-adress-input
+        >
+        <app-promo-input formControlName="promo"
+          >Have a promo code?</app-promo-input
+        >
+      </div>
+    </div>
+  </div>
+  <!-- <div class="footer-wrapper">
+    <footer>
+      <button class="btn btn-secondary btn-lg" routerLink="/register/info/">
+        Back
+      </button>
+      <div class="space"></div>
+      <button class="btn btn-primary btn-lg" (click)="onContinue()">
+        Continue
+      </button>
+    </footer>
+  </div> -->
+</div>

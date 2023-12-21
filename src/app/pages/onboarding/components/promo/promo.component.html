@@ -1,0 +1,68 @@
+<div class="wrapper" *ngIf="activeUrl | async as url">
+  <div class="slug" [ngClass]="{ signin: url.includes('sign-in') }"></div>
+  <div class="logo-wrapper">
+    <img src="./../../../../../assets/img/logo.svg" alt="" />
+  </div>
+  <div class="content-wrapper">
+    <ng-container *ngIf="url.includes('register')">
+      <ng-container *ngTemplateOutlet="register"></ng-container>
+    </ng-container>
+    <ng-container
+      *ngIf="url.includes('sign-in') || url.includes('reset-password')"
+    >
+      <ng-container *ngTemplateOutlet="signin"></ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #register>
+  <div class="content register">
+    <div class="title">
+      <h2>Test!</h2>
+    </div>
+    <div class="list">
+      <div class="item">
+        <div class="icon">
+          <img src="./../../../../../assets/icons/icon-globe.svg" alt="" />
+        </div>
+        <div class="text">Test</div>
+      </div>
+      <div class="item">
+        <div class="icon">
+          <img
+            src="./../../../../../assets/icons/icon-wallet-checkmark.svg"
+            alt=""
+          />
+        </div>
+        <div class="text">Test</div>
+      </div>
+      <div class="item">
+        <div class="icon">
+          <img
+            src="./../../../../../assets/icons/icon-space-rocket.svg"
+            alt=""
+          />
+        </div>
+        <div class="text">Test</div>
+      </div>
+      <div class="item">
+        <div class="icon">
+          <img
+            src="./../../../../../assets/icons/icon-tools-wench-ruler.svg"
+            alt=""
+          />
+        </div>
+        <div class="text">Test</div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #signin>
+  <div class="content signin">
+    <div class="title">
+      <h2>Let’s Do It</h2>
+    </div>
+    <div class="subtitle">test test test test</div>
+  </div>
+</ng-template>

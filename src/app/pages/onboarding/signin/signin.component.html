@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <div class="content">
+    <div class="form" *ngIf="form" [formGroup]="form">
+      <h1>Log In</h1>
+      <div class="inputs">
+        <app-input
+          [inputOptions]="inputOptions['email']"
+          formControlName="email"
+          >Email</app-input
+        >
+        <app-password-input [showPrompt]="false" formControlName="password"
+          >Password</app-password-input
+        >
+      </div>
+      <button
+        class="btn btn-lg btn-primary"
+        (click)="onSignIn()"
+        [disabled]="form.invalid"
+      >
+        Log in
+      </button>
+      <p>
+        Don't have an account yet?
+        <a routerLink="/register">Create an account</a>
+      </p>
+    </div>
+  </div>
+</div>

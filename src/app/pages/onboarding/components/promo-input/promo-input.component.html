@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <span>
+    <ng-content></ng-content>
+  </span>
+  <div class="input-wrapper" *ngIf="promoForm" [formGroup]="promoForm">
+    <input
+      type="text"
+      [placeholder]="placeholder"
+      (input)="onInput()"
+      formControlName="promo"
+    />
+    <span
+      [ngClass]="{
+        hidden: promoForm.controls['isApplied'].value,
+        active: promoForm.controls['promo'].value
+      }"
+      (click)="
+        promoForm.controls['isApplied'].setValue(true, { emitEvent: true })
+      "
+      >Apply</span
+    >
+    <div
+      class="icon"
+      [ngClass]="{
+        hidden: !promoForm.controls['isApplied'].value
+      }"
+    ></div>
+  </div>
+</div>

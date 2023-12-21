@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const environment = {\n  appCoreDomain: '.test.com',\n  apiUrl: '',\n  socketUrl: '',\n  coreUrl: ''\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
