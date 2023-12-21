@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { ROUTE_STEPS } from '../steps/route-steps';\nexport const CanActivateGuard = (route, state) => {\n  if (route.data['name']) {\n    const fn = ROUTE_STEPS[route.data['name']].guard;\n    return fn();\n  }\n  return true;\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

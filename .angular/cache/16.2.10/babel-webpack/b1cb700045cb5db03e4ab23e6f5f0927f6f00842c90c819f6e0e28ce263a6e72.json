@@ -1,1 +1,0 @@
-{"ast":null,"code":"import * as moment from 'moment';\nexport const dateValidator = format => control => {\n  if (control && control.value && !moment(control.value, format, true).isValid()) {\n    return {\n      invalidDate: true\n    };\n  }\n  return null;\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
